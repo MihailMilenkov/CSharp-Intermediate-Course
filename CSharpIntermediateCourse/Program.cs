@@ -47,7 +47,21 @@ public class StopWatch
     }
     public void Stop()
     {
-        
+        if (stopWatchIsOn)
+        {
+            stopWatchIsOn = false;
+            Console.WriteLine();
+            Console.WriteLine($"Watch stopped at {DateTime.Now}");
+            Console.WriteLine($"Time elapsed: {timeElapsed}");
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.WriteLine();
+            Console.WriteLine("Watch is already stopped");
+            Console.WriteLine($"Time elapsed: {timeElapsed}");
+            Console.WriteLine();
+        }
     }
 
 }
