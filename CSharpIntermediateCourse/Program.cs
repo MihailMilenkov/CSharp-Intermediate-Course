@@ -8,29 +8,46 @@ while (true)
     int inputNum = int.Parse(Console.ReadLine());
 
     if (inputNum == 1)
-        break;// stopWatch.Stop();
+        stopWatch.Start();
     else if (inputNum == 2)
-        break;
+        stopWatch.Stop();
     else
         break;
 }
 public class StopWatch
 {
-    private TimeSpan timeExpanded = TimeSpan.Zero;
-
+    private TimeSpan timeElapsed = TimeSpan.Zero;
+    private DateTime started;
+    private bool stopWatchIsOn = false;
     public StopWatch()
     {
     }
 
     public void Start()
     {
-        var started = DateTime.Now;
-        Console.WriteLine($"Watch started at {started}");
+        if (stopWatchIsOn)
+        {
+            //throw new InvalidOperationException("The StopWatch is already on."); // different approach
+            timeElapsed = DateTime.Now - started;
+            Console.WriteLine();
+            Console.WriteLine("The StopWatch is already on");
+            Console.WriteLine($"Time elapsed: {timeElapsed}");
+            Console.WriteLine();
+        }
+        else
+        {
+            timeElapsed = TimeSpan.Zero; // this implementation resets the timer
+            stopWatchIsOn = true;
+            started = DateTime.Now;
+            Console.WriteLine();
+            Console.WriteLine($"StopWatch started at {started}");
+            Console.WriteLine($"Time elapsed: {timeElapsed}");
+            Console.WriteLine();
+        }
     }
     public void Stop()
     {
-        //timeExpanded += DateTime.Now - started;
-        Console.WriteLine($"Watch stopped at {DateTime.Now}");
-        Console.WriteLine($"Time expanded: {timeExpanded}");
+        
     }
+
 }
