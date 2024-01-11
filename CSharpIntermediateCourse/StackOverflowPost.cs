@@ -15,8 +15,8 @@ public class StackOverflowPost
         {
             Console.WriteLine("Press \"1\" to UpVote, \"2\" to DownVote and \"3\" to exit.");
             Console.WriteLine("-------------------------------");
-            int inputNum = int.Parse(Console.ReadLine());
-
+            int inputNum = int.Parse(Console.ReadLine().TrimEnd());
+        
             if (inputNum == 1)
                 Vote(1);
             else if (inputNum == 2)
