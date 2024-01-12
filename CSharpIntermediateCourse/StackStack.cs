@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class StackStack
+    public class StackStack : IStackStack
     {
         private Stack<object> stack;
 
@@ -16,6 +16,7 @@
         }
 
         internal void TurnOn()
+
         {
             while (true)
             {
@@ -27,14 +28,17 @@
                 else if (inputNum == 1)
                 {
                     Console.WriteLine("Please enter an object.");
-                    object input_obj = Console.ReadLine();
-                    stack.Push(input_obj);
+                    object? input_obj = Console.ReadLine();
+                    Push(input_obj);
                 }
                 else if (inputNum == 2)
                 {
+                    Console.WriteLine("Popping: " + Pop());
                 }
                 else if (inputNum == 3)
                 {
+                    Console.WriteLine("Clearing");
+                    Clear();
                 }
                 else
                     Console.WriteLine("Invalid Command");
@@ -54,6 +58,8 @@
 
         object Pop()
         {
+            if (stack.Count == 0)
+                throw new InvalidOperationException("Stack is empty");
             return stack.Pop();
         }
 

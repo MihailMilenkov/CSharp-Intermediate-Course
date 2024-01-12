@@ -7,6 +7,5 @@ using CSharpIntermediateCourse;
 //StackOverflowPost post = new StackOverflowPost(); // 2
 //post.TurnOn();
 
-
 StackStack stack = new StackStack(); // 3
 stack.TurnOn();
